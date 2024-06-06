@@ -1,0 +1,21 @@
+Enhanced Networking
+===================
+For high network bandwidth and throughput, consider using Jumbo
+Frames, EC2 Enhanced Networking, Placement groups, EBS optimized
+instances, DPDK
+• Instance level network optimization with
+• Enhanced Networking (SR-IOV, ENA, Intel VF 82599)
+• Placement Groups
+• EBS-Optimized Instances
+• Operating system level network optimization with DPDK
+• EFA is ENA with additional OS-bypass capability which provides further
+improved network performance for HPC workloads
+Within VPC the MTU size can be 9001 bytes with Jumbo Frames
+• For the following cases the maximum MTU is 1500 bytes:
+• Traffic over an internet gateway
+• Traffic over an inter-region VPC peering connection
+• Traffic over VPN connections
+• When PPS is bottleneck, increased MTU provides more throughput
+• While Enhanced Networking and placement groups lowers the latency
+between EC2 and hypervisor, DPDK improves the packet processing at
+OS level
