@@ -35,13 +35,7 @@ Create a new private subnet in the same VPC as the Amazon RDS DB instance. Creat
 
 Create a Private Virtual Interface between VPC that hosts Amazon RDS DB instance and QuickSight. Use this connection to privately access necessary data from RDS DB - A private virtual interface is used to access an Amazon VPC using private IP addresses. This interface is used by the AWS Direct Connect connection. This option has been added as a distractor.
 
-References:
 
-https://docs.aws.amazon.com/quicksight/latest/user/working-with-aws-vpc.html
-
-https://docs.aws.amazon.com/quicksight/latest/user/vpc-creating-a-connection-in-quicksight.html
-
-https://aws.amazon.com/premiumsupport/knowledge-center/quicksight-redshift-private-connection/
 
 Domaine
 Configure network integration with application services
@@ -76,13 +70,10 @@ Transit virtual interface: A transit virtual interface should be used to access 
 
 Direct Connect gateways only support routing traffic from Direct Connect VIFs to VGW (associated with VPC). VPC to VPC communication or VIF to VIF communication is not possible via Direct Connect gateways. Therefore, to send traffic between two VPCs, you must configure a VPC peering connection.
 
- via - https://docs.aws.amazon.com/directconnect/latest/UserGuide/virtualgateways.html
+ 
 
 The given use case requires data flow from the on-premises data center to each of the VPCs, so you must create one VIF each from the on-premises data center to each of the VPCs. If you are using VPC peering, on-premises connectivity (VPN and/or Direct Connect) must be made to each VPC. Resources in a VPC cannot reach on-premises using the hybrid connectivity of peered VPCs.
 
- via - https://docs.aws.amazon.com/whitepapers/latest/building-scalable-secure-multi-vpc-network-infrastructure/vpc-peering.html
-
- via - https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/amazon-vpc-to-amazon-vpc-connectivity-options.html
 
 Incorrect options:
 
@@ -92,15 +83,7 @@ Create a private VIF to the Audit department's VPC. Peer this VPC to all the oth
 
 Create a public VIF to the Audit department's VPC. Peer this VPC to all the other VPCs - This option has been added as a distractor. You can only create a transit virtual interface to connect to a transit gateway, a public virtual interface to connect to public resources (non-VPC services), or a private virtual interface to connect to a VPC. So you cannot create a public VIF to connect to a VPC.
 
-References:
 
-https://docs.aws.amazon.com/whitepapers/latest/building-scalable-secure-multi-vpc-network-infrastructure/vpc-peering.html
-
-https://aws.amazon.com/directconnect/faqs/
-
-https://docs.aws.amazon.com/directconnect/latest/UserGuide/virtualgateways.html
-
-https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/amazon-vpc-to-amazon-vpc-connectivity-options.html
 
 Domaine
 Design and implement AWS networks
@@ -139,7 +122,7 @@ For matching prefixes where each VPN connection uses BGP, the AS PATH is compare
 
 When the AS PATHs are the same length, and the first AS in the AS_SEQUENCE is the same across multiple paths, multi-exit discriminators (MEDs) are compared. The path with the lowest MED value is preferred.
 
- via - https://aws.amazon.com/premiumsupport/knowledge-center/vpn-configure-tunnel-preference/
+
 
 Incorrect options:
 
@@ -150,11 +133,7 @@ Configure the VPN connection in an Active/Active configuration and advertise a m
 For the given use case, you need to advertise a more specific prefix for tunnel A as that's the preferred tunnel. So both these options are incorrect.
 Configure the VPN connection in an Active/Passive configuration and advertise a more specific prefix for tunnel A - If the AWS VPN connection (dynamic routing type) has an Active/Passive configuration (tunnel A is UP, but tunnel B is DOWN), traffic from AWS to the on-premises network traverses tunnel A because it's in the UP state. So using a more specific prefix for tunnel A is irrelevant.
 
-References:
 
-https://aws.amazon.com/premiumsupport/knowledge-center/vpn-configure-tunnel-preference/
-
-https://docs.aws.amazon.com/vpn/latest/s2svpn/cgw-dynamic-routing-examples.html
 
 Domaine
 Design and implement AWS networks
@@ -202,11 +181,7 @@ When responding to queries, Route 53 includes only the healthy primary resources
 
 In active-passive failover, when responding to queries, Route 53 includes only the healthy primary resources. If all the primary resources are unhealthy, Route 53 begins to include only the healthy secondary resources in response to DNS queries.
 
-References:
 
-https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-types.html
-
-https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-how-route-53-chooses-records.html
 
 Domaine
 Configure network integration with application services
@@ -238,15 +213,12 @@ Correct options:
 
 Domain Name System (DNS) is a standard by which names used on the internet are resolved to their corresponding IP addresses. A DNS hostname is a name that uniquely and absolutely names a computer; it's composed of a hostname and a domain name. DNS servers resolve DNS hostnames to their corresponding IP addresses. Public IPv4 addresses enable communication over the internet, while private IPv4 addresses enable communication within the network of the instance (either EC2-Classic or a VPC).
 
- via - https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html
 
- via - https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html
 
 To support DNS resolution, Amazon provides DNS server at the 169.254.169.253 IPv4 address or the reserved IP address at the base of the VPC IPv4 network range plus two. So for the given use case, 10.2.0.2 is also reserved by Amazon for DNS resolution.
 
 The Dynamic Host Configuration Protocol (DHCP) provides a standard for passing configuration information to hosts on a TCP/IP network. The options field of a DHCP message contains configuration parameters, including the domain name, domain name server, and the netbios-node-type. By default, all instances in a nondefault VPC receive an unresolvable hostname that AWS assigns (for example, ip-10-0-0-202). You can assign your own domain name to your instances, and use up to four of your own DNS servers. To do that, you must create a custom set of DHCP options to use with the VPC.
 
- via - https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html
 
 Incorrect options:
 
@@ -258,11 +230,7 @@ Incorrect options:
 
 These three options contradict the explanation provided above, so these options are incorrect.
 
-References:
 
-https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html
-
-https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html
 
 Domaine
 Design and implement AWS networks
@@ -295,19 +263,17 @@ For AWS Direct Connect connection, reuse your existing VIFs and enable them for 
 
 To use your Direct Connect connection for dual-stack traffic, you need to create one of the following virtual interfaces (VIFs): Private VIF, Public VIF, or Transit VIF, or reuse your existing VIFs and enable them for dual-stack support. The following considerations apply to dual-stack VIFs: 1. A virtual interface can support a BGP peering session for IPv4, IPv6, or both (dual-stack). 2. For the IPv6 stack, Amazon automatically assigns a /125 IPv6 CIDR for the BGP peering connection. 3. On Public VIFs, you must advertise to AWS /64 prefixes or larger.
 
-Dual-stack connectivity on Amazon Direct Connect:  via - https://aws.amazon.com/blogs/networking-and-content-delivery/dual-stack-ipv6-architectures-for-aws-and-hybrid-networks/
+
 
 For dual-stack connectivity on the Site-to-Site VPN connection via a Transit Gateway, you need to create two VPN connections, one for the IPv4 stack and one for the IPv6 stack
 
 Your Site-to-Site VPN connection on a Transit Gateway can support either IPv4 traffic or IPv6 traffic inside the VPN tunnels. This means that for dual-stack connectivity, you need to create two VPN connections, one for the IPv4 stack and one for the IPv6 stack. For the Site-to-Site VPN connection, you intend to use for IPv4 routing, each tunnel will have a /30 IPv4 CIDR in the 169.254.0.0/16 range, while for the VPN connection intended for IPv6 routing, each VPN tunnel will have two CIDR blocks: one /30 IPv4 CIDR in the 169.254.0.0/16 range and one /126 IPv6 CIDR in the fd00::/8 range.
 
-Dual-stack configuration on AWS Site-to-site VPN:  via - https://aws.amazon.com/blogs/networking-and-content-delivery/dual-stack-ipv6-architectures-for-aws-and-hybrid-networks/
 
 To configure an IPv6-enabled VPC attachment for the Transit Gateway, the VPC and the attachment subnets need to have associated IPv6 CIDRs. The remaining Transit Gateway configurations continue to have the same functionalities across both stacks
 
 AWS Transit Gateway is a network transit hub that you can use to interconnect your VPCs and hybrid networks for both IPv4 and IPv6 stacks. All Transit Gateway concepts and constructs – attachments, peering connections, associations, propagations, and routing – continue to have the same functionalities across both stacks. Note that to configure an IPv6-enabled VPC attachment to the Transit Gateway, the VPC and attachment subnets need to have associated IPv6 CIDRs.
 
-Dual-stack AWS Transit Gateway Routing:  via - https://aws.amazon.com/blogs/networking-and-content-delivery/dual-stack-ipv6-architectures-for-aws-and-hybrid-networks/
 
 Incorrect options:
 
@@ -319,9 +285,7 @@ AWS Transit Gateway does not support IPv6 traffic. Hence, VPC peering should be 
 
 These three options contradict the explanation provided above, so these options are incorrect.
 
-Reference:
 
-https://aws.amazon.com/blogs/networking-and-content-delivery/dual-stack-ipv6-architectures-for-aws-and-hybrid-networks/
 
 Domaine
 Design and implement hybrid IT network architectures
@@ -348,13 +312,9 @@ The on-premises network would be unreachable as the local route would be preferr
 
 You can enable access to your remote network from your VPC by creating an AWS Site-to-Site VPN (Site-to-Site VPN) connection, and configuring routing to pass traffic through the connection. A Site-to-Site VPN connection offers two VPN tunnels between a virtual private gateway or a transit gateway on the AWS side, and a customer gateway (which represents a VPN device) on the remote (on-premises) side. When you create a Site-to-Site VPN connection, you must specify the type of routing that you plan to use (static or dynamic) and update the route table for your subnet.
 
- via - https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html
-
-Site-to-Site VPN Components:  via - https://docs.aws.amazon.com/vpn/latest/s2svpn/how_it_works.html
 
 If propagated routes from a Site-to-Site VPN connection or AWS Direct Connect connection overlap with the local route for your VPC, the local route is most preferred even if the propagated routes are more specific. For the given use case, the on-premises network would be unreachable as the local route would be preferred for all traffic destined for 172.31.1.0/24.
 
- via - https://docs.aws.amazon.com/vpn/latest/s2svpn/VPNRoutingTypes.html
 
 Incorrect options:
 
@@ -366,13 +326,4 @@ All traffic destined for 172.31.1.0/24 is routed via the virtual private gateway
 
 These two options have been added as distractors since the use case does not mention having an internet gateway attached to the given VPC.
 
-References:
 
-https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html
-
-https://docs.aws.amazon.com/vpn/latest/s2svpn/how_it_works.html
-
-https://docs.aws.amazon.com/vpn/latest/s2svpn/VPNRoutingTypes.html
-
-Domaine
-Design and implement hybrid IT network architecture
