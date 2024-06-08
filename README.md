@@ -2,15 +2,7 @@ An analytics company uses Amazon QuickSight (Enterprise Edition) to easily creat
 
 Which of the following represents an optimal solution for configuring a private connection between QuickSight and Amazon RDS DB instance?
 
-Create a Private Virtual Interface between VPC that hosts Amazon RDS DB instance and QuickSight. Use this connection to privately access necessary data from RDS DB
 
-Correct answer
-Create a new private subnet in the same VPC as the Amazon RDS DB instance. Create a new security group with necessary inbound rules for QuickSight in the same VPC. Sign in to QuickSight as a QuickSight admin and create a new QuickSight VPC connection. Create a new dataset from the RDS DB instance
-
-Create a new private subnet in the same VPC as the Amazon RDS DB instance. Create a new network Access Control List (ACL) with necessary inbound rules for QuickSight in the same VPC. Connect from QuckSight using VPC connector
-
-Your answer is incorrect
-Amazon QuickSight Enterprise edition is fully integrated with the Amazon VPC service. Create an ENI in QuickSight that points to the VPC that hosts the RDS DB instance. However, the subnet has to be a private subnet and not a public subnet
 
 Explication générale
 Correct option:
@@ -37,23 +29,14 @@ Create a Private Virtual Interface between VPC that hosts Amazon RDS DB instance
 
 
 
-Domaine
-Configure network integration with application services
-Question 2
-Incorrect
+
 The networking team at a global company has set up separate VPCs for applications managed by the Finance, Marketing, Audit and HR departments. You need to set up AWS Direct Connect to enable data flow from the on-premises data center to each of these VPCs. The company has monitoring software running in the Audit department's VPC that needs to collect metrics from the instances in all the other VPCs.
 
 Due to budget constraints, the data transfer charges should be kept to a minimum. Which of the following solutions would you recommend for the given requirement?
 
 Create four private VIFs, that is, one VIF each from the on-premises data center to each of the VPCs. Route traffic between VPCs using the Direct Connect link
 
-Correct answer
-Create four private VIFs, that is, one VIF each from the on-premises data center to each of the VPCs. Enable VPC peering between all VPCs
 
-Your answer is incorrect
-Create a private VIF to the Audit department's VPC. Peer this VPC to all the other VPCs
-
-Create a public VIF to the Audit department's VPC. Peer this VPC to all the other VPCs
 
 Explication générale
 Correct option:
@@ -85,23 +68,14 @@ Create a public VIF to the Audit department's VPC. Peer this VPC to all the othe
 
 
 
-Domaine
-Design and implement AWS networks
+
 Question 3
-Incorrect
+
 The networking team at a company wants to set up an AWS Site-to-Site VPN connection between its on-premises data center and the AWS Cloud. The VPN connection should use dynamic routing and the team wants to make sure that tunnel A is preferred over tunnel B when sending traffic from AWS to the on-premises network.
 
 Which solution would you recommend for this requirement?
 
-Configure the VPN connection in an Active/Passive configuration and advertise a more specific prefix for tunnel B
 
-Configure the VPN connection in an Active/Active configuration and advertise a more specific prefix for tunnel B
-
-Your answer is incorrect
-Configure the VPN connection in an Active/Passive configuration and advertise a more specific prefix for tunnel A
-
-Correct answer
-Configure the VPN connection in an Active/Active configuration and advertise a more specific prefix for tunnel A
 
 Explication générale
 Correct option:
@@ -135,26 +109,11 @@ Configure the VPN connection in an Active/Passive configuration and advertise a 
 
 
 
-Domaine
-Design and implement AWS networks
 Question 6
-Incorrect
+
 A Network Engineer is setting up DNS failover configuration for Route 53. The engineer needs to use multiple routing policies (such as latency-based and weighted) to configure a more complex DNS failover.
 
 Which of the following are the key points to consider while configuring a failover configuration on Route 53? (Select two)
-
-Your selection is incorrect
-If you're routing traffic to any AWS resources that you can create alias records for, you need to create health checks for these resources too
-
-Your selection is correct
-If you're creating failover records in a private hosted zone, you must assign a public IP address to an instance in the VPC to check the health of an endpoint within a VPC by IP address
-
-When responding to queries, Route 53 includes only the healthy primary resources in Active-active failover configuration
-
-Correct selection
-Records without a health check are always considered healthy. If no record is healthy, all records are deemed to be healthy
-
-More than half of the configured records with nonzero weights must be unhealthy before Route 53 starts to respond to DNS queries using records that have weights of zero
 
 Explication générale
 Correct options:
@@ -181,28 +140,12 @@ When responding to queries, Route 53 includes only the healthy primary resources
 
 In active-passive failover, when responding to queries, Route 53 includes only the healthy primary resources. If all the primary resources are unhealthy, Route 53 begins to include only the healthy secondary resources in response to DNS queries.
 
-
-
-Domaine
-Configure network integration with application services
 Question 9
-Incorrect
 A VPC is deployed with a 10.2.0.0/16 CIDR block. The networking team is reviewing DHCP options, and there is disagreement about the valid DNS addresses available for the VPC.
 
 Which of the following addresses are valid IP addresses provided by Amazon for this scenario? (Select two)
 
-10.0.0.2
 
-Your selection is incorrect
-169.254.169.254
-
-Correct selection
-10.2.0.2
-
-Your selection is correct
-169.254.169.253
-
-10.1.0.2
 
 Explication générale
 Correct options:
@@ -232,29 +175,13 @@ These three options contradict the explanation provided above, so these options 
 
 
 
-Domaine
-Design and implement AWS networks
 Question 13
-Incorrect
 A company has decided to adopt IPv6 for its network. As an intermediary step in the path to fully adopting IPv6, the company is looking for dual-stack IPv4/IPv6 designs. To kickstart the change, the company has picked a straightforward hybrid network that consists of an on-premises connection to AWS over a Site-to-Site VPN connection via a Transit Gateway and an AWS Direct Connect connection between AWS and the on-premises data center.
 
 As a Network Engineer, which of the following measures would you suggest to meet the given requirements? (Select three)
 
 AWS Transit Gateway does not support IPv6 traffic. Hence, VPC peering should be considered for dual-stack traffic
 
-Your selection is correct
-For dual-stack connectivity on the Site-to-Site VPN connection via a Transit Gateway, you need to create two VPN connections, one for the IPv4 stack and one for the IPv6 stack
-
-Your selection is correct
-For AWS Direct Connect connection, reuse your existing VIFs and enable them for dual-stack support
-
-Your selection is incorrect
-AWS Site-to-Site VPN connection on a Transit Gateway can support both IPv4 traffic and IPv6 traffic inside the VPN tunnels. Hence, no changes are required on this connection
-
-To use Direct Connect connection for dual-stack traffic, you need to create separate virtual interfaces (VIFs- Private VIF or Public VIF or Transit VIF) for each stack
-
-Correct selection
-To configure an IPv6-enabled VPC attachment for the Transit Gateway, the VPC and the attachment subnets need to have associated IPv6 CIDRs. The remaining Transit Gateway configurations continue to have the same functionalities across both stacks
 
 Explication générale
 Correct options:
@@ -287,23 +214,13 @@ These three options contradict the explanation provided above, so these options 
 
 
 
-Domaine
-Design and implement hybrid IT network architectures
+
 Question 15
-Incorrect
+
 A retail company operates its IT infrastructure in a hybrid cloud configuration with the on-premises data center connected to the AWS Cloud via an AWS Site-to-Site VPN connection. The networking team has set up an AWS VPC with a CIDR range of 172.31.0.0/16 and the on-premises network has a CIDR range of 172.31.1.0/24. The VPC's route table also has a propagated route to a virtual private gateway with a destination of 172.31.1.0/24.
 
 Which of the following represents a correct statement regarding the routing for traffic destined to the on-premises network?
 
-All traffic destined for 172.31.1.0/24 is routed via the virtual private gateway or the internet gateway
-
-All traffic destined for 172.31.1.0/24 is routed via the internet gateway
-
-Your answer is incorrect
-All traffic destined for 172.31.1.0/24 is routed via the virtual private gateway
-
-Correct answer
-The on-premises network would be unreachable as the local route would be preferred for all traffic destined for 172.31.1.0/24
 
 Explication générale
 Correct option:
